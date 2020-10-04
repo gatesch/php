@@ -14,7 +14,7 @@ def answerQuestion = ''
 
         // Build Docker image
         stage 'Build'
-        sh "docker build -t harbor.example.local/php/php:${gitCommit()} ."
+        sh "docker build -t harbor.tesch.loc/library/php:${gitCommit()} ."
 
         // Login to DTR 
         stage 'Login'
