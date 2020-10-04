@@ -37,7 +37,7 @@ def answerQuestion = ''
           stage('Deployment') {
                 sh "kubectl create ns php"
         	sh "kubectl create -f limits.yaml"
-        	sh "kubectl create deployment php-safe -n php --image=harbor.example.local/php/php:${gitCommit()}"
+        	sh "kubectl create deployment php-safe -n php --image=harbor.tesch.loc/library/php:${gitCommit()}"
         	sh "kubectl expose deployment php-safe --port=80 --name=php-service -n php"
         	sh "kubectl create -f php-ingress.yaml"
         	sh "kubectl autoscale deployment php-safe --cpu-percent=50 --min=1 --max=10 -n php"
@@ -49,7 +49,7 @@ def answerQuestion = ''
 
         // update the image in the deployement
         stage 'update'
-        sh "kubectl set image deployment php-safe -n php php=harbor.example.local/php/php:${gitCommit()}"
+        sh "kubectl set image deployment php-safe -n php php=harbor.tesch.loc/library/php:${gitCommit()}"
     }
 
 // remember to copy the dtr cert in /etc/pki/ca-trust/source/anchors
