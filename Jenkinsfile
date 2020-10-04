@@ -26,11 +26,11 @@ def answerQuestion = ''
                 usernameVariable: 'DTR_USERNAME'
             ]]
         ){ 
-        sh "docker login -u admin -p ${env.DTR_PASSWORD}  harbor.example.local"}
+        sh "docker login -u admin -p ${env.DTR_PASSWORD}  harbor.tesch.loc"}
 
         // Push the image 
         stage 'Push'
-        sh "docker push harbor.example.local/php/php:${gitCommit()}"
+        sh "docker push harbor.tesch.loc/library/php:${gitCommit()}"
 
 //        clean all
         try {
