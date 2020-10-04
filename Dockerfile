@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:7.4-apache
 COPY index.php /var/www/html/index.php
 COPY template /var/www/html/template
 COPY js /var/www/html/js
