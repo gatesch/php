@@ -59,6 +59,13 @@ def answerQuestion = ''
 	
 	stage 'Selenium'
 		sh "./selenium-test.py"
+
+	stage ('Deploy Prod?') {
+		input "Deploy Prod?"
+	}
+
+	stage ('Production Deployment')
+		echo "production deployed"
 }
 
 
