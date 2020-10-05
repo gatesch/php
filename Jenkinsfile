@@ -17,9 +17,6 @@ def answerQuestion = ''
         withSonarQubeEnv('Sonar') {
           sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=php -Dsonar.sources=."
         }
-        timeout(time: 3, unit: 'MINUTES') {
-          waitForQualityGate abortPipeline: true
-        }
 
         // Build Docker image
         stage 'Build'
