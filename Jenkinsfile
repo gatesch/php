@@ -56,6 +56,9 @@ def answerQuestion = ''
         	sh "kubectl create -f php-ingress.yaml"
         	sh "kubectl autoscale deployment php-safe --cpu-percent=50 --min=1 --max=10 -n php"
 		}
+	
+	stage 'Selenium'
+		sh "./selenium-test.py"
 }
 
 
