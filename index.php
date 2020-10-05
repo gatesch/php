@@ -53,7 +53,7 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Hello <?php echo 'Prox DEMO!'?></h1>
+        <h1>Hello <?php echo 'HPE DEMO!'?></h1>
         <h1>Hostname <?php echo gethostname(); ?></h1>
         <p class="lead">HPE Example PHP Demo!!!</p>
       </div>

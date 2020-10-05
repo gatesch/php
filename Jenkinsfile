@@ -12,6 +12,15 @@ def answerQuestion = ''
         stage 'Checkout'
         checkout scm
 
+	stage 'Sonar'
+	def scannerHome = tool 'Sonar';
+        withSonarQubeEnv('Sonar') {
+          sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=php -Dsonar.sources=."
+        }
+        timeout(time: 3, unit: 'MINUTES') {
+          waitForQualityGate abortPipeline: true
+        }
+
         // Build Docker image
         stage 'Build'
         sh "docker build -t harbor.tesch.loc/library/php:${gitCommit()} ."
